@@ -27,10 +27,12 @@ const COLUMNS = {
   }
 };
 
-const Stories = ({ stories }) =>
+const Stories = ({ stories, onArchive }) =>
   <div className="stories">
     <StoriesHeader columns={COLUMNS} />
-    {stories.map(story => <Story key={story.objectID} story={story} columns={COLUMNS} />)}
+    {stories.map(story =>
+      <Story key={story.objectID} story={story} columns={COLUMNS} onArchive={onArchive} />
+    )}
   </div>
 
 Stories.defaultProps = {
@@ -38,7 +40,8 @@ Stories.defaultProps = {
 }
 
 Stories.propTypes = {
-  stories: PropTypes.array
+  stories: PropTypes.array,
+  onArchive: PropTypes.func.isRequired
 }
 
 export default Stories;
