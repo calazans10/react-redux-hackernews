@@ -12,9 +12,9 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   type: PropTypes.string,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   children: PropTypes.node.isRequired
 };
 
