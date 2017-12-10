@@ -37,6 +37,6 @@ Story.propTypes = {
     points: PropTypes.number.isRequired,
     objectID: PropTypes.number.isRequired
   }).isRequired
-}
+};
 
 export default Story;
