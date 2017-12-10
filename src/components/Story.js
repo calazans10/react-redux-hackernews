@@ -32,11 +32,11 @@ const Story = ({ story, columns, onArchive }) => {
 
 Story.propTypes = {
   story: PropTypes.shape({
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     url: PropTypes.string,
-    author: PropTypes.string.isRequired,
-    num_comments: PropTypes.number.isRequired,
-    points: PropTypes.number.isRequired,
+    author: PropTypes.string,
+    num_comments: PropTypes.number,
+    points: PropTypes.number,
     objectID: PropTypes.string.isRequired
   }).isRequired,
   columns: PropTypes.object.isRequired,
