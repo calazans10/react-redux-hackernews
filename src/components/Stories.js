@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { doArchiveStory } from '../actions/archive';
 import { getReadableStories } from '../selectors/story';
 import './Stories.css'
 
@@ -30,12 +29,10 @@ const COLUMNS = {
   }
 };
 
-const Stories = ({ stories, onArchive }) =>
+const Stories = ({ stories }) =>
   <div className="stories">
     <StoriesHeader columns={COLUMNS} />
-    {stories.map(story =>
-      <Story key={story.objectID} story={story} columns={COLUMNS} onArchive={onArchive} />
-    )}
+    {stories.map(story => <Story key={story.objectID} story={story} columns={COLUMNS} />)}
   </div>
 
 Stories.defaultProps = {
@@ -43,16 +40,11 @@ Stories.defaultProps = {
 };
 
 Stories.propTypes = {
-  stories: PropTypes.array,
-  onArchive: PropTypes.func.isRequired
+  stories: PropTypes.array
 };
 
 const mapStateToProps = state => ({
   stories: getReadableStories(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  onArchive: id => dispatch(doArchiveStory(id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Stories);
+export default connect(mapStateToProps)(Stories);

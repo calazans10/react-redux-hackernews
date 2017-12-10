@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { doArchiveStory } from '../actions/archive';
 import './Story.css'
 
 import { ButtonInline } from './Button';
@@ -36,7 +38,13 @@ Story.propTypes = {
     num_comments: PropTypes.number.isRequired,
     points: PropTypes.number.isRequired,
     objectID: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  columns: PropTypes.object.isRequired,
+  onArchive: PropTypes.func.isRequired
 };
 
-export default Story;
+const mapDispatchToProps = dispatch => ({
+  onArchive: id => dispatch(doArchiveStory(id))
+});
+
+export default connect(null,mapDispatchToProps)(Story);
