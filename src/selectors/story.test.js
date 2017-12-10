@@ -1,4 +1,4 @@
-import { getReadableStories } from './story';
+import { getReadableStories, getFetchError } from './story';
 
 describe('story selector', () => {
   it('retrieves readable stories', () => {
@@ -16,5 +16,18 @@ describe('story selector', () => {
     const readableStories = getReadableStories(state);
 
     expect(readableStories).toEqual(expectedReadableStories);
+  });
+
+  it('retrieves an error', () => {
+    const storyState = {
+      error: new Error('An error'),
+      stories: []
+    };
+    const state = { storyState };
+
+    const expectedFetchedError = new Error('An error');
+    const fetchedError = getFetchError(state);
+
+    expect(fetchedError).toEqual(expectedFetchedError);
   });
 });
